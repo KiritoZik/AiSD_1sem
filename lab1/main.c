@@ -83,7 +83,6 @@ int count_listik(TreeNode* nowNode){
 TreeNode* cut_delete_node(TreeNode* root, int valueChild){
     if(root==NULL) return NULL;
     
-    //delete if node is first_child
     if(root->first_child != NULL && root->first_child->value == valueChild){
         TreeNode* target = root -> first_child;
         root -> first_child = target -> next_brother;
@@ -91,7 +90,6 @@ TreeNode* cut_delete_node(TreeNode* root, int valueChild){
         return target;
     }
 
-    //delete if node is brother
     TreeNode* child = root->first_child;
     while(child != NULL && child->next_brother != NULL){
         if(child->next_brother->value == valueChild){
@@ -103,7 +101,6 @@ TreeNode* cut_delete_node(TreeNode* root, int valueChild){
         child = child -> next_brother;
     }
 
-    //in depth and in width
     TreeNode* res = cut_delete_node(root->first_child, valueChild);
     if (res) return res;
     return cut_delete_node(root->next_brother, valueChild);
