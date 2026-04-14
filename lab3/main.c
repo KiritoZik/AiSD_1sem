@@ -258,7 +258,7 @@ void printInfix(Node* root) {
 
 // Тест
 void runTest(const char* expr) {
-    printf("==================================================\n");
+    printf("--------------------------------------------------\n");
     printf("ИСХОДНОЕ ВЫРАЖЕНИЕ: %s\n", expr);
 
     Node* tree = buildTree(expr);
@@ -291,7 +291,7 @@ void runTest(const char* expr) {
 
 int main() {
     char expr[2048];
-    printf("Введите выражение (Enter для встроенных тестов):\n");
+    printf("Введите выражение (Enter тестов):\n");
     if (fgets(expr, sizeof(expr), stdin)) {
         int onlySpaces = 1;
         for (int i = 0; expr[i] != '\0'; i++) {
@@ -306,5 +306,7 @@ int main() {
     runTest("(10/2)*(6/3)");
     runTest("(15.5/3.1)*(100/10)");
     runTest("5+((8/2)*(9/3))");
+    runTest("5+((-8/2)*(9/-3))");
+    runTest("5+((-8/2/3)*(9/-3/8))");
     return 0;
 }
